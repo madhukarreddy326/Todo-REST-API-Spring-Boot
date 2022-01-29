@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @RestController
@@ -103,6 +104,13 @@ public class TodoController {
     @RequestMapping(method = RequestMethod.GET, value = "/todolist")
     public List<Todo> getTodoList(){
         return todoService.getMyTodoList();
+
+    }
+
+
+    @RequestMapping(method = RequestMethod.GET, value = "/{findTodoId}")
+    public Optional<Todo> findTodoId(@PathVariable long findTodoId){
+        return todoService.GetTodoByID(findTodoId);
 
     }
 
